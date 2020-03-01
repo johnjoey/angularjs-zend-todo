@@ -1,0 +1,23 @@
+<div ng-controller="todoController">
+  <form name="todo-form" ng-submit="addTodo()">
+    <input type="text" name="new-todo" id="new-todo" ng-model="newTodo" required>
+    <button ng-disabled="frm.$invalid">Add New</button>
+  </form>
+  <button ng-click="clearCompleted()">Clear Completed</button>
+  
+  <h2>Todos</h2>
+  <ul>
+    <li ng-repeat="todo in getTodos(false)">
+      <input type="checkbox" ng-model="todo.completed">
+      <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
+    </li>
+  </ul>
+
+  <h3>Completed</h3>
+  <ul>
+    <li ng-repeat="todo in getTodos(true)">
+      <input type="checkbox" ng-model="todo.completed">
+      <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
+    </li>
+  </ul>
+</div>

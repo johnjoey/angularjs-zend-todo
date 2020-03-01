@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular
   .module('Todo', [])
   .controller('todoController', ['$scope', function($scope) {

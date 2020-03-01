@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Todo">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Todo</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo</title>
 
-  <style>
-    .completed {
-      text-decoration: line-through;
-    }
-  </style>
-</head>
-<body>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div ng-controller="todoController">
+      <form name="todo-form" ng-submit="addTodo()">
+        <input
+          type="text"
+          name="new-todo"
+          id="new-todo"
+          ng-model="newTodo"
+          required
+        />
+        <button ng-disabled="frm.$invalid">Add New</button>
+      </form>
+      <button ng-click="clearCompleted()">Clear Completed</button>
 
-  <div ng-controller="todoController">
-    <form name="todo-form" ng-submit="addTodo()">
-      <input type="text" name="new-todo" id="new-todo" ng-model="newTodo" required>
-      <button ng-disabled="frm.$invalid">Add New</button>
-    </form>
-    <button ng-click="clearCompleted()">Clear Completed</button>
-    
-    <h2>Todos</h2>
-    <ul>
-      <li ng-repeat="todo in getTodos(false)">
-        <input type="checkbox" ng-model="todo.completed">
-        <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
-      </li>
-    </ul>
+      <h2>Todos</h2>
+      <ul>
+        <li ng-repeat="todo in getTodos(false)">
+          <input type="checkbox" ng-model="todo.completed" />
+          <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
+        </li>
+      </ul>
 
-    <h3>Completed</h3>
-    <ul>
-      <li ng-repeat="todo in getTodos(true)">
-        <input type="checkbox" ng-model="todo.completed">
-        <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
-      </li>
-    </ul>
-  </div>
+      <h3>Completed</h3>
+      <ul>
+        <li ng-repeat="todo in getTodos(true)">
+          <input type="checkbox" ng-model="todo.completed" />
+          <span ng-class="{'completed': todo.completed}">{{todo.title}}</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script src="node_modules/angular/angular.js"></script>
 
-</body>
-<script src="node_modules/angular/angular.js"></script>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </html>
