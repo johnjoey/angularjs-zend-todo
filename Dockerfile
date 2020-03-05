@@ -2,7 +2,7 @@ FROM php:7.0-apache
 
 RUN apt-get update \
  && apt-get install -y git zlib1g-dev \
- && docker-php-ext-install zip \
+ && docker-php-ext-install zip mbstring pdo pdo-mysql \
  && a2enmod rewrite \
  && sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/000-default.conf \
  && mv /var/www/html /var/www/public \
@@ -10,3 +10,5 @@ RUN apt-get update \
   | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www
+
+RUN composer install

@@ -9,6 +9,18 @@ angular
         completed: true,
       },
       {
+        title: 'dockerize',
+        completed: true,
+      },
+      {
+        title: 'add zend framework',
+        completed: true,
+      },
+      {
+        title: 'add webpack',
+        completed: true,
+      },
+      {
         title: 'make form and list directives',
         completed: false,
       },
